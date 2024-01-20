@@ -1,5 +1,6 @@
 import Sites from '@/components/Dashboard/sites'
 import Image from 'next/image'
+import Link from 'next/link'
 import { BiGridAlt, BiHistory, BiLineChart, BiLineChartDown, BiLogOut, BiNotification, BiSlider, BiUser, BiWalletAlt } from 'react-icons/bi'
 
 export default function SideBar () {
@@ -52,19 +53,24 @@ export default function SideBar () {
   ]
 
   return (
-    <section>
-      <Image
-        src='/logo-light.svg'
-        alt='logo'
-        width={170}
-        height={41}
-      />
+    <section className='w-fit h-screen flex flex-col gap-12 px-12 py-8 border-r shadow-sm bg-[#f9fbfb]  border-[#ededed]'>
+      <Link href='/'>
+        <Image
+          src='/logo-light.svg'
+          alt='logo'
+          width={170}
+          height={41}
+          priority
+        />
+      </Link>
 
-      <nav>
-        <ul>
+      <nav className='mt-4'>
+        <ul className='flex flex-col gap-2 justify-between'>
           {sites.map((site, index) => <Sites key={index} {...site} />)}
         </ul>
       </nav>
+
+      <span className='text-xs text-center text-[#858585]'>Created by devoncats</span>
     </section>
   )
 }
